@@ -4,6 +4,7 @@
 #include "parser_c/http_parser.h"
 
 #include <string>
+#include <sstream>
 #include <unordered_map>
 
 namespace http {
@@ -11,6 +12,8 @@ namespace http {
 class HttpMessage {
 public:
 	void SetHeader(std::string const& key, std::string const& value);
+	void SetHeader(std::string const& key, int value);
+
 	std::string GetHeader(std::string const& key);
 
 	void Clear();
@@ -25,13 +28,10 @@ public:
 		return os;
 	}
 
-	std::string MethodStr() const {
-		return http_method_str(method);
-	}
-
-	std::string StatusStr() const {
-		return http_status_str(status);
-	}
+	std::string MethodStr() const;
+	std::string StatusStr() const;
+	std::string VersionStr() const;
+	std::string HeaderStr() const;
 	
 	std::string url;
 	std::string body;
@@ -45,10 +45,15 @@ private:
 
 class HttpRequest : public HttpMessage {
 public:
-
 };
 
+class HttpResponse : public HttpMessage {
+public:
+	std::string GetStr();
 
+	void Write(std::string const& body, int len=-1);
+	void Write(http_status status);
+};
 
 }
 
