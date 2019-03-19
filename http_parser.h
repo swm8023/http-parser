@@ -41,7 +41,7 @@ struct HttpData {
 		header.clear();
 	}
 
-	void Output() {
+	void Output() const{
 		printf("http method: %d code: %d\n", method, status_code);
 		printf("url: %s\n", url.c_str());
 		for (auto& it : header) {
