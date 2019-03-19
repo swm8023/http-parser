@@ -21,7 +21,7 @@
 #ifndef http_parser_h
 #define http_parser_h
 #ifdef __cplusplus
-extern "C" {
+//extern "C" {
 #endif
 
 /* Also update SONAME in the Makefile whenever you change these. */
@@ -434,6 +434,6 @@ int http_body_is_final(const http_parser *parser);
 void http_parser_set_max_header_size(uint32_t size);
 
 #ifdef __cplusplus
-}
+//}
 #endif
 #endif
