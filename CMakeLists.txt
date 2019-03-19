@@ -19,7 +19,7 @@ source_group(parser_cc FILES ${SRC_CC})
 add_executable(http_parser_test test/http_test.cc)
 target_link_libraries(http_parser_test http_parser)
 
-install(FILES parser_c/*.h DESTINATION include/http_parser/parser_c)
-install(FILES *.h DESTINATION include/http_parser)
+install(FILES parser_c/http_parser.h DESTINATION include/http_parser/parser_c)
+install(FILES http_message.h http_parser.h DESTINATION include/http_parser)
 
 install(TARGETS http_parser DESTINATION lib)
