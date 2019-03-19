@@ -49,7 +49,7 @@ public:
 
 class HttpResponse : public HttpMessage {
 public:
-	std::string GetStr();
+	std::string GetStr() const;
 
 	void Write(std::string const& body, int len=-1);
 	void Write(http_status status);

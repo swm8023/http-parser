@@ -49,7 +49,7 @@ std::string HttpMessage::HeaderStr() const {
 
 /* HttpResponse */
 
-std::string HttpResponse::GetStr() {
+std::string HttpResponse::GetStr() const {
 	// assert(size >= GetBuffSize());
 	std::ostringstream stream;
 	stream << VersionStr() << " " << status << " " << StatusStr() << "\r\n";
