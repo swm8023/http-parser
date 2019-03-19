@@ -156,7 +156,6 @@ public:
 		if (!cur_header_value_.empty()) {
 			data_->header[cur_header_field_] = cur_header_value_;
 		}
-		printf("header comp!\n");
 		return 0;
 	}
 
