@@ -1,5 +1,7 @@
 #include "http_parser.h"
 
+#include <string.h>
+
 using namespace http;
 
 void HttpParser::Init(HttpMessage* msg, http_parser_type type, CompleteCallback cb) {
