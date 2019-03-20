@@ -13,7 +13,7 @@ void HttpMessage::SetHeader(std::string const& key, int value) {
 	SetHeader(key, stream.str());
 }
 
-std::string HttpMessage::GetHeader(std::string const& key) {
+std::string HttpMessage::GetHeader(std::string const& key) const {
 	auto iter = header_.find(key);
 	return iter == header_.end() ? "" : iter->second;
 }

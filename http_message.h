@@ -14,7 +14,7 @@ public:
 	void SetHeader(std::string const& key, std::string const& value);
 	void SetHeader(std::string const& key, int value);
 
-	std::string GetHeader(std::string const& key);
+	std::string GetHeader(std::string const& key) const;
 
 	void Clear();
 
