@@ -1,6 +1,7 @@
-#include "http_parser.h"
-
+#include <string.h>
 #include <iostream>
+
+#include "http_parser.h"
 
 
 const char REQUEST[] =
