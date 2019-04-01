@@ -47,10 +47,29 @@ std::string HttpMessage::HeaderStr() const {
 }
 
 
-/* HttpResponse */
+/* HttpRequest */
+std::string HttpRequest::GetStr() const {
+	std::ostringstream stream;
+	stream << MethodStr() << " " << url << " " << VersionStr() << "\r\n";
+	stream << HeaderStr() << "\r\n";
+	stream << body;
+	return stream.str();
+}
 
+void HttpRequest::Write(http_method method_p, std::string url_p) {
+	method = method_p;
+	url = url_p;
+}
+
+void HttpRequest::Write(std::string const& body_p, int len) {
+	body = body_p;
+	if (len == -1) len = body_p.length();
+	SetHeader("Content-Length", len);
+}
+
+
+/* HttpResponse */
 std::string HttpResponse::GetStr() const {
-	// assert(size >= GetBuffSize());
 	std::ostringstream stream;
 	stream << VersionStr() << " " << status << " " << StatusStr() << "\r\n";
 	stream << HeaderStr() << "\r\n";
@@ -63,6 +82,7 @@ void HttpResponse::Write(std::string const& body_p, int len) {
 	if (len == -1) len = body_p.length();
 	SetHeader("Content-Length", len);
 }
+
 void HttpResponse::Write(http_status status_p) {
 	status = status_p;
 }

@@ -45,12 +45,17 @@ private:
 
 class HttpRequest : public HttpMessage {
 public:
+	const static http_parser_type PARSER_TYPE = HTTP_REQUEST;
+	std::string GetStr() const;
+	void Write(http_method method, std::string url);
+	void Write(std::string const& body, int len = -1);
+
 };
 
 class HttpResponse : public HttpMessage {
 public:
+	const static http_parser_type PARSER_TYPE = HTTP_RESPONSE;
 	std::string GetStr() const;
-
 	void Write(std::string const& body, int len=-1);
 	void Write(http_status status);
 };

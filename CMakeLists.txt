@@ -2,8 +2,6 @@ cmake_minimum_required(VERSION 3.0)
 
 project(http_parser CXX)
 
-set(CMAKE_BUILD_TYPE "RelWithDebInfo")
-
 add_definitions(-DHTTP_PARSER_STRICT=0)
 
 set(SRC_C parser_c/http_parser.h parser_c/http_parser.cc)
